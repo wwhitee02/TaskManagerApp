@@ -10,5 +10,7 @@
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<FileVersion>1.0.0.0</FileVersion>
 	</PropertyGroup>
-
+	<ItemGroup>
+		<InternalsVisibleTo Include="TaskManagerApp.Tests" />
+	</ItemGroup>
 </Project>

@@ -153,13 +153,13 @@
 
         #endregion
 
-        private Label descriptionLabel;
-        private TextBox descriptionTextBox;
-        private Button addTaskButton;
-        private Button editTaskButton;
-        private Button removeTaskButton;
-        private Button toggleCompletionButton;
-        private Label tasksLabel;
-        private ListBox tasksListBox;
+        internal Label descriptionLabel;
+        internal TextBox descriptionTextBox;
+        internal Button addTaskButton;
+        internal Button editTaskButton;
+        internal Button removeTaskButton;
+        internal Button toggleCompletionButton;
+        internal Label tasksLabel;
+        internal ListBox tasksListBox;
     }
 }

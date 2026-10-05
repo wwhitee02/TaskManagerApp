@@ -5,7 +5,7 @@ namespace TaskManagerApp
 {
     public partial class MainForm : Form
     {
-        private TaskManager taskManager;
+        internal TaskManager taskManager;
 
         public MainForm()
         {
@@ -23,7 +23,7 @@ namespace TaskManagerApp
             }
         }
 
-        private void addTaskButton_Click(object sender, EventArgs e)
+        internal void addTaskButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace TaskManagerApp
             }
         }
 
-        private void editTaskButton_Click(object sender, EventArgs e)
+        internal void editTaskButton_Click(object sender, EventArgs e)
         {
             if (tasksListBox.SelectedIndex == -1)
             {
@@ -56,7 +56,7 @@ namespace TaskManagerApp
             }
         }
 
-        private void removeTaskButton_Click(object sender, EventArgs e)
+        internal void removeTaskButton_Click(object sender, EventArgs e)
         {
             if (tasksListBox.SelectedIndex == -1)
             {
@@ -74,7 +74,7 @@ namespace TaskManagerApp
             }
         }
 
-        private void toggleCompletionButton_Click(object sender, EventArgs e)
+        internal void toggleCompletionButton_Click(object sender, EventArgs e)
         {
             if (tasksListBox.SelectedIndex == -1)
             {

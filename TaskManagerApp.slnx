@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="TaskManagerApp.Tests/TaskManagerApp.Tests.csproj" />
+  <Project Path="TaskManagerApp.UITests/TaskManagerApp.UITests.csproj" Id="dd086d28-a32a-4980-862f-6a905aaa0887" />
   <Project Path="TaskManagerApp/TaskManagerApp.csproj" />
 </Solution>

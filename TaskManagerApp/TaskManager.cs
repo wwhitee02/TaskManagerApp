@@ -19,7 +19,7 @@ namespace TaskManagerApp
 
         public void AddTask(string description)
         {
-            if (string.IsNullOrEmpty(description))
+            if (string.IsNullOrWhiteSpace(description))
             {
                 throw new ArgumentException("Описание задачи не может быть пустым.");
             }
@@ -30,7 +30,7 @@ namespace TaskManagerApp
         public void EditTask(int index, string newDescription)
         {
             CheckIndex(index);
-            if (string.IsNullOrEmpty(newDescription))
+            if (string.IsNullOrWhiteSpace(newDescription))
             {
                 throw new ArgumentException("Описание задачи не может быть пустым.");
             }
@@ -73,12 +73,13 @@ namespace TaskManagerApp
                 var lines = File.ReadAllLines(FileName);
                 foreach (var line in lines)
                 {
-                    var parts = line.Split('|');
-                    if (parts.Length == 2)
+                    // Делим строку только по первой черте: всё после неё — описание
+                    var parts = line.Split('|', 2);
+
+                    // Строки с неверным статусом пропускаем, а не падаем с ошибкой
+                    if (parts.Length == 2 && bool.TryParse(parts[0], out bool isCompleted))
                     {
-                        bool isCompleted = bool.Parse(parts[0]);
-                        string description = parts[1];
-                        Tasks.Add(new TaskItem(description) { IsCompleted = isCompleted });
+                        Tasks.Add(new TaskItem(parts[1]) { IsCompleted = isCompleted });
                     }
                 }
             }

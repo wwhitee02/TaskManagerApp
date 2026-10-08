@@ -99,18 +99,58 @@ namespace TaskManagerApp.Tests
             Assert.AreEqual(1, manager.Tasks.Count);
         }
 
+        // Исправление дефекта TC-003: описание из одних пробелов не принимается
         [TestMethod]
-        public void AddTask_WhitespaceDescription_IsCurrentlyAccepted()
+        public void AddTask_WhitespaceDescription_ThrowsArgumentException()
         {
-            // Тест фиксирует текущее поведение: описание из одних пробелов
-            // принимается. Это недочёт, он будет исправлен в лабораторной работе 4.
+            // Arrange
             var manager = new TaskManager();
 
+            // Act & Assert
+            Assert.ThrowsExactly<ArgumentException>(() => manager.AddTask("   "));
+        }
+
+        [TestMethod]
+        public void EditTask_WhitespaceDescription_ThrowsArgumentException()
+        {
+            // Arrange
+            var manager = new TaskManager();
+            manager.AddTask("Купить хлеб");
+
+            // Act & Assert
+            Assert.ThrowsExactly<ArgumentException>(() => manager.EditTask(0, "   "));
+        }
+
+        // Исправление дефекта TC-015: задача с символом | сохраняется после перезапуска
+        [TestMethod]
+        public void LoadTasks_DescriptionWithPipe_TaskRestored()
+        {
+            // Arrange
+            var manager = new TaskManager();
+            manager.AddTask("Хлеб|молоко");
+
+            // Act (имитация перезапуска программы)
+            var newManager = new TaskManager();
+
+            // Assert
+            Assert.AreEqual(1, newManager.Tasks.Count);
+            Assert.AreEqual("Хлеб|молоко", newManager.Tasks[0].Description);
+        }
+
+        // Исправление дефекта TC-016: некорректная строка в файле пропускается
+        [TestMethod]
+        public void LoadTasks_InvalidLine_IsSkipped()
+        {
+            // Arrange
+            File.WriteAllLines(FileName, new[] { "abc|Задача", "True|Купить хлеб" });
+
             // Act
-            manager.AddTask("   ");
+            var manager = new TaskManager();
 
             // Assert
             Assert.AreEqual(1, manager.Tasks.Count);
+            Assert.AreEqual("Купить хлеб", manager.Tasks[0].Description);
+            Assert.IsTrue(manager.Tasks[0].IsCompleted);
         }
     }
 }

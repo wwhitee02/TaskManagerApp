@@ -146,7 +146,7 @@ namespace TaskManagerApp.Tests
 
             // Assert
             var lines = File.ReadAllLines(FileName);
-            Assert.AreEqual("False|Купить хлеб", lines[0]);
+            Assert.AreEqual("False|Без категории|Купить хлеб", lines[0]);
         }
 
         [TestMethod]

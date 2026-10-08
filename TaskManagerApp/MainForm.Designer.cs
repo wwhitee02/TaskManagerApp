@@ -36,6 +36,13 @@
             toggleCompletionButton = new Button();
             tasksLabel = new Label();
             tasksListBox = new ListBox();
+            categoryLabel = new Label();
+            categoryComboBox = new ComboBox();
+            newCategoryLabel = new Label();
+            newCategoryTextBox = new TextBox();
+            addCategoryButton = new Button();
+            filterLabel = new Label();
+            filterComboBox = new ComboBox();
             SuspendLayout();
             // 
             // descriptionLabel
@@ -128,12 +135,84 @@
             tasksListBox.Size = new Size(390, 274);
             tasksListBox.TabIndex = 7;
             // 
+            // categoryLabel
+            // 
+            categoryLabel.AutoSize = true;
+            categoryLabel.Location = new Point(20, 364);
+            categoryLabel.Name = "categoryLabel";
+            categoryLabel.Size = new Size(188, 30);
+            categoryLabel.TabIndex = 8;
+            categoryLabel.Text = "Категория задачи:";
+            // 
+            // categoryComboBox
+            // 
+            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            categoryComboBox.FormattingEnabled = true;
+            categoryComboBox.Location = new Point(32, 411);
+            categoryComboBox.Name = "categoryComboBox";
+            categoryComboBox.Size = new Size(212, 38);
+            categoryComboBox.TabIndex = 9;
+            // 
+            // newCategoryLabel
+            // 
+            newCategoryLabel.AutoSize = true;
+            newCategoryLabel.Location = new Point(563, 419);
+            newCategoryLabel.Name = "newCategoryLabel";
+            newCategoryLabel.Size = new Size(180, 30);
+            newCategoryLabel.TabIndex = 10;
+            newCategoryLabel.Text = "Новая категория:";
+            // 
+            // newCategoryTextBox
+            // 
+            newCategoryTextBox.Location = new Point(568, 473);
+            newCategoryTextBox.Name = "newCategoryTextBox";
+            newCategoryTextBox.Size = new Size(175, 35);
+            newCategoryTextBox.TabIndex = 11;
+            // 
+            // addCategoryButton
+            // 
+            addCategoryButton.Cursor = Cursors.Hand;
+            addCategoryButton.FlatStyle = FlatStyle.Flat;
+            addCategoryButton.Location = new Point(591, 531);
+            addCategoryButton.Name = "addCategoryButton";
+            addCategoryButton.Size = new Size(131, 40);
+            addCategoryButton.TabIndex = 12;
+            addCategoryButton.Text = "Создать";
+            addCategoryButton.UseVisualStyleBackColor = true;
+            addCategoryButton.Click += addCategoryButton_Click;
+            // 
+            // filterLabel
+            // 
+            filterLabel.AutoSize = true;
+            filterLabel.Location = new Point(20, 473);
+            filterLabel.Name = "filterLabel";
+            filterLabel.Size = new Size(214, 30);
+            filterLabel.TabIndex = 13;
+            filterLabel.Text = "Показать категорию:";
+            // 
+            // filterComboBox
+            // 
+            filterComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            filterComboBox.FormattingEnabled = true;
+            filterComboBox.Location = new Point(32, 531);
+            filterComboBox.Name = "filterComboBox";
+            filterComboBox.Size = new Size(212, 38);
+            filterComboBox.TabIndex = 14;
+            filterComboBox.SelectedIndexChanged += filterComboBox_SelectedIndexChanged;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PaleTurquoise;
-            ClientSize = new Size(886, 426);
+            ClientSize = new Size(995, 706);
+            Controls.Add(filterComboBox);
+            Controls.Add(filterLabel);
+            Controls.Add(addCategoryButton);
+            Controls.Add(newCategoryTextBox);
+            Controls.Add(newCategoryLabel);
+            Controls.Add(categoryComboBox);
+            Controls.Add(categoryLabel);
             Controls.Add(tasksListBox);
             Controls.Add(tasksLabel);
             Controls.Add(toggleCompletionButton);
@@ -161,5 +240,12 @@
         internal Button toggleCompletionButton;
         internal Label tasksLabel;
         internal ListBox tasksListBox;
+        internal Label categoryLabel;
+        internal ComboBox categoryComboBox;
+        internal Label newCategoryLabel;
+        internal TextBox newCategoryTextBox;
+        internal Button addCategoryButton;
+        internal Label filterLabel;
+        internal ComboBox filterComboBox;
     }
 }
